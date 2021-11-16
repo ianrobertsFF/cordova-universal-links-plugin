@@ -1,6 +1,6 @@
 {
   "name": "@signosoft/cordova-universal-links-plugin",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Cordova plugin to add in your application support for Universal Links (iOS 9) and Deep Links (Android). Basically, open application through the link in the browser.",
   "cordova": {
     "id": "@signosoft/cordova-universal-links-plugin",
