@@ -16,6 +16,9 @@
     NSArray *_supportedHosts;
     CDVPluginResult *_storedEvent;
     NSMutableDictionary<NSString *, NSString *> *_subscribers;
+    
+    //Save event in storage for app restarts with unsubscribed events
+    NSUserDefaults *userDefaults;
 }
 
 @end
@@ -29,6 +32,14 @@
     // Can be used for testing.
     // Just uncomment, close the app and reopen it. That will simulate application launch from the link.
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onResume:) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    // Restore previous url if found
+    self->userDefaults = [[NSUserDefaults alloc] init];
+    NSURL *url = [self->userDefaults URLForKey:@"CULTmpURL"];
+    if (url) {
+        CULHost *host = [self findHostByURL:url];
+        [self storeEventWithHost:host originalURL:url];
+    }
 }
 
 //- (void)onResume:(NSNotification *)notification {
@@ -104,6 +115,7 @@
  */
 - (void)storeEventWithHost:(CULHost *)host originalURL:(NSURL *)originalUrl {
     _storedEvent = [CDVPluginResult resultWithHost:host originalURL:originalUrl];
+    [self->userDefaults setURL:originalUrl forKey:@"CULTmpURL"];
     [self tryToConsumeEvent];
 }
 
@@ -145,6 +157,7 @@
             NSString *callbackID = _subscribers[eventName];
             [self.commandDelegate sendPluginResult:_storedEvent callbackId:callbackID];
             _storedEvent = nil;
+            [self->userDefaults removeObjectForKey:@"CULTmpURL"];
             break;
         }
     }
