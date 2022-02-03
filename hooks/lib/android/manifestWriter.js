@@ -24,14 +24,14 @@ function writePreferences(cordovaContext, pluginPreferences) {
     pathToManifest = path.join(cordovaContext.opts.projectRoot, 'platforms', 'android', 'app', 'src', 'main', 'AndroidManifest.xml');
   }
   var manifestSource = xmlHelper.readXmlAsJson(pathToManifest);
-  var cleanManifest;
+  //var cleanManifest;
   var updatedManifest;
 
   // remove old intent-filters
-  cleanManifest = removeOldOptions(manifestSource);
+  //cleanManifest = removeOldOptions(manifestSource);
 
   // inject intent-filters based on plugin preferences
-  updatedManifest = injectOptions(cleanManifest, pluginPreferences);
+  updatedManifest = injectOptions(manifestSource, pluginPreferences);
 
   // save new version of the AndroidManifest
   xmlHelper.writeJsonAsXml(updatedManifest, pathToManifest);
