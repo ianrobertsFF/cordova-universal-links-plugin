@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felodt9090/cordova-universal-links-plugin.git"
+    "url": "git+https://github.com/ianrobertsFF/cordova-universal-links-plugin.git"
   },
   "keywords": [
     "cordova",
@@ -42,10 +42,10 @@
     "node-version-compare": ">=1.0.1",
     "plist": ">=1.2.0"
   },
-  "author": "felodt9090",
+  "author": "ianrobertsFF",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/felodt9090/cordova-universal-links-plugin/issues"
+    "url": "https://github.com/ianrobertsFF/cordova-universal-links-plugin/issues"
   },
-  "homepage": "https://github.com/felodt9090/cordova-universal-links-plugin#readme"
+  "homepage": "https://github.com/ianrobertsFF/cordova-universal-links-plugin#readme"
 }
