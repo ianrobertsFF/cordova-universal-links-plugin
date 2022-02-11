@@ -217,7 +217,7 @@ public class UniversalLinksPlugin extends CordovaPlugin {
         }
         catch (JSONException e) {
             Log.d("UniversalLinks", "Host was empty", e);
-            host = null
+            host = null;
         }
         return host;
     }
